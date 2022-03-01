@@ -28,6 +28,6 @@
 	<div>
 		<span class="footer-title">Company</span>
 		<a href="mailto:eric75p@protonmail.com" class={css_link}>Contact</a>
-		<span class={css_txt}>2022 © squizzee bêta 0.1</span>
+		<span class={css_txt}>2022 © squizzee bêta 0.1.1</span>
 	</div>
 </footer>

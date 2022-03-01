@@ -49,9 +49,12 @@
 	let labels;
 	let valids;
 	let buttonColors = [];
+	let answerButtonDisabled = ''
 	$: buttonColors;
 	let selectedId;
 	//
+	let controlButtonColor: String;
+	let controlButtonDisabled: String;
 	let controlButtonLabel;
 	let controlButtonAction = processValidation;
 
@@ -63,6 +66,8 @@
 				clearInterval(timer);
 				timer = null;
 				selectedId = 100;
+				controlButtonColor = '';
+				controlButtonDisabled = '';
 				processValidation();
 			}
 		}
@@ -87,6 +92,7 @@
 	onMount(() => {
 		$AppStore.mainBarVisible = false;
 		$AppStore.quizBarVisible = true;
+		$AppStore.surveyBarVisible = false;
 		$AppStore.barTitle = quiz.title;
 	});
 
@@ -107,6 +113,8 @@
 			}
 		}
 		buttonColors = tab;
+		controlButtonColor = '';
+		controlButtonDisabled = '';
 	}
 
 	// --------------------------------------- processButtons()
@@ -130,6 +138,7 @@
 		nbrOfQuestions = quiz.questions.length;
 		initQuestion();
 		initButtons();
+		$AppStore.timerVisible = true;
 	}
 	init();
 
@@ -148,7 +157,10 @@
 		}
 		valids = tab;
 		controlButtonAction = processValidation;
-		$AppStore.countdown = 20;
+		controlButtonColor = 'text-slate-500';
+		controlButtonDisabled = 'btn-disabled';
+		$AppStore.countdown = quiz.questions[currentQuestionIndex].duration;
+		answerButtonDisabled = ''
 		startTimer();
 	}
 
@@ -165,18 +177,14 @@
 	// --------------------------------------- processValidation()
 	function processValidation() {
 		if (selectedId != undefined) {
+			answerButtonDisabled = 'btn-disabled'
 			stopTimer();
 			processButtons();
 			controlButtonLabel = 'Suivant';
 			controlButtonAction = processNextQuestion;
 			if (valids[selectedId]) {
 				score++;
-				console.log("Bonne réponse !")
 			}
-			else {
-				console.log("Mauvaise réponse !")
-			}
-			console.log("score = ", score)
 		}
 	}
 
@@ -193,6 +201,7 @@
 
 	// --------------------------------------- quizResults()
 	function quizResults() {
+		$AppStore.timerVisible = false;
 		controlButtonLabel = 'Quitter';
 		controlButtonAction = quit;
 		quizVisible = false;
@@ -204,12 +213,14 @@
 <section class="grid grid-cols-1 gap-4 p-5 place-items-center">
 	{#if quizVisible}
 		<!-- Question -->
-		<h1 class="text-xl">{`${currentQuestionIndex + 1}/${nbrOfQuestions} ${question.text}`}</h1>
+		<div class="badge badge-lg">Question {`${currentQuestionIndex + 1}/${nbrOfQuestions}`}</div>
+
+		<h1 class="text-xl">{question.text}</h1>
 
 		<!-- Answers -->
 		<div class="p-4">
 			{#each labels as label, id}
-				<QuizButton {label} buttonId={id} {action} color={buttonColors[id]} />
+				<QuizButton {label} buttonId={id} {action} color={buttonColors[id]} disabled={answerButtonDisabled}/>
 			{/each}
 		</div>
 	{/if}
@@ -220,6 +231,8 @@
 	<div class="w-full border-t border-gray-500" />
 
 	<!-- Control-->
-	<button class="btn btn-outline" on:click={controlButtonAction}>{controlButtonLabel}</button>
-	<div class="w-full border-t border-gray-500" />
+	<button
+		class={`btn btn-outline ${controlButtonDisabled} ${controlButtonColor}`}
+		on:click={controlButtonAction}>{controlButtonLabel}</button
+	>
 </section>

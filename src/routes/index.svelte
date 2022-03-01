@@ -17,6 +17,7 @@
 	onMount(() => {
 		$AppStore.mainBarVisible = true;
 		$AppStore.quizBarVisible = false;
+		$AppStore.surveyBarVisible = false;
 	});
 </script>
 
@@ -50,10 +51,10 @@
 
 	<InfoCard
 		title="Enquêtes"
-		buttonClick={notImplementedYet}
+		buttonClick={() => goto('/sampleSurvey')}
 		buttonLabel="Exemple"
 		text_color="text-success"
-		buttonDisable={true}
+		buttonDisable={false}
 	>
 		<p>
 			Avec squizzee, vous pouvez élaborer des enquêtes de satisfaction publiques ou réservées à un

@@ -6,6 +6,7 @@
 	// ------------------------------------------- children
 	import MainBar from './MainBar.svelte';
 	import QuizBar from '../../quiz/QuizBar.svelte';
+	import SurveyBar from '../../survey/SurveyBar.svelte';
 	import Menu from './LeftMenu.svelte';
 
 	// ------------------------------------------- handleClick()
@@ -25,6 +26,9 @@
 		{/if}
 		{#if $AppStore.quizBarVisible}
 			<QuizBar />
+		{/if}
+		{#if $AppStore.surveyBarVisible}
+			<SurveyBar />
 		{/if}
 	</div>
 

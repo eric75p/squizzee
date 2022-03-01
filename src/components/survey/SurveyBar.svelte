@@ -1,11 +1,13 @@
 <!-- ****************** script **************** -->
 <script>
+
 	// --------------------------------------- stores
 	import { AppStore } from '../../stores/AppStore';
 
 	// ------------------------------------------- children
-	import CancelButton from './CancelButton.svelte';
-	import Timer from './Timer.svelte';
+	import CancelButton from '../quiz/CancelButton.svelte';
+
+
 </script>
 
 <!-- ****************** markup **************** -->
@@ -16,12 +18,6 @@
 
 <!-- middle -->
 <div class="flex-1 px-2 mx-2 ">
-	<span class="text-lg font-bold text-info">{$AppStore.barTitle}</span>
+	<span class="text-lg font-bold text-slate-300">{$AppStore.barTitle}</span>
 </div>
 
-<!-- right -->
-<div class="flex-none  px-2 mx-2 lg:flex">
-	{#if $AppStore.timerVisible}
-		<Timer />
-	{/if}
-</div>
