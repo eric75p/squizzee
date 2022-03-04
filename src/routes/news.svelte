@@ -15,7 +15,6 @@
 <section class="grid grid-cols-1 gap-4 place-items-center">
 	<InfoCard
 		title="27 février 2022 &#10003;"
-		buttonLabel="Créer un compte"
 		text_color="text-success"
 		buttonVisible={false}
 	>
@@ -27,8 +26,7 @@
 	</InfoCard>
 
 	<InfoCard
-		title="1er Mars 2022 &#10003;"
-		buttonLabel="Créer un compte"
+		title="1er mars 2022 &#10003;"
 		text_color="text-success"
 		buttonVisible={false}
 	>
@@ -40,12 +38,11 @@
 	</InfoCard>
 
 	<InfoCard
-		title="Mars 2022"
-		buttonLabel="Créer un compte"
-		text_color="text-info"
+		title="4 mars 2022 &#10003;"
+		text_color="text-success"
 		buttonVisible={false}
 	>
-		<div class="text-slate-500 text-sm">
+		<div class="text-sm">
 			<p>Version bêta 0.1.2</p>
 			<p>Exemple de sondage</p>
 		</div>
@@ -53,7 +50,6 @@
 
 	<InfoCard
 		title="Mars 2022"
-		buttonLabel="Créer un compte"
 		text_color="text-info"
 		buttonVisible={false}
 	>
@@ -65,7 +61,6 @@
 
 	<InfoCard
 		title="Mars/Avril 2022"
-		buttonLabel="Créer un compte"
 		text_color="text-neutral-focus"
 		buttonVisible={false}
 	>
@@ -77,7 +72,6 @@
 
 	<InfoCard
 		title="Mars/Avril 2022"
-		buttonLabel="Créer un compte"
 		text_color="text-neutral-focus"
 		buttonVisible={false}
 	>

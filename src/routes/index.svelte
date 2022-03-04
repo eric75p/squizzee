@@ -64,10 +64,10 @@
 
 	<InfoCard
 		title="Sondages"
-		buttonClick={notImplementedYet}
+		buttonClick={() => goto('/samplePoll')}
 		buttonLabel="Exemple"
 		text_color="text-secondary"
-		buttonDisable={true}
+		buttonDisable={false}
 	>
 		<p>Concevez des sondages publics ou limités à un ensemble particulier de personnes...</p>
 	</InfoCard>
